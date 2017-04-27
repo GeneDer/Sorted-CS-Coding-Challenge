@@ -3,6 +3,19 @@
 import sys
 import re
 
+def write_file(l, path):
+    """
+    This function will convert the list into a
+    string and write to the file.
+    """
+    s = " ".join(l)
+    try:
+        with open(path, 'w') as o:
+            o.write(s)
+    except:
+        print "incorrect output path at", path
+        sys.exit()
+        
 
 def my_list_sort(l):
     """
@@ -29,7 +42,7 @@ def my_list_sort(l):
     result = []
     for i in is_num:
         if i:
-            result.append(nums.pop())
+            result.append(str(nums.pop()))
         else:
             result.append(words.pop())
     return result
@@ -43,7 +56,7 @@ def read_file(path):
         with open(path, 'r') as f:
             return f.readline().split()
     except:
-        print "No file found at", path
+        print "No input file found at", path
         sys.exit()
         
 if __name__ == "__main__":
@@ -55,5 +68,5 @@ if __name__ == "__main__":
     output_file = args[2]
 
     list2sort = read_file(input_file)
-    
-    print my_list_sort(list2sort)
+    sorted_list = my_list_sort(list2sort)
+    write_file(sorted_list, output_file)    
