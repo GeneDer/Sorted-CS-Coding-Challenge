@@ -29,12 +29,13 @@ def my_list_sort(l):
     pattern = re.compile("[^A-Za-z0-9-]")
     for i in l:
         s = pattern.sub("", i)
-        try:
-            nums.append(int(s))
-            is_num.append(True)
-        except:
-            words.append(s.replace("-", ""))
-            is_num.append(False)
+        if len(s.replace("-", "")) > 0:
+            try:
+                nums.append(int(s))
+                is_num.append(True)
+            except:
+                words.append(s.replace("-", ""))
+                is_num.append(False)
 
     nums.sort(reverse=True)
     words.sort(reverse=True)
