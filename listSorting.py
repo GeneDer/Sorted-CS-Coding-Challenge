@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 import sys
+import re
+
 
 def my_list_sort(l):
     """
@@ -8,7 +10,13 @@ def my_list_sort(l):
     remove unwanted characters, and return sorted words
     and numbers as an list. 
     """
-    pass
+    num_or_word = []
+    nums = []
+    words = []
+    pattern = re.compile("[^A-Za-z0-9]")
+    for i in l:
+        print pattern.sub("", i)
+    
 
 def read_file(path):
     """
@@ -30,5 +38,6 @@ if __name__ == "__main__":
     input_file = args[1]
     output_file = args[2]
 
-    print read_file(input_file)
-    print read_file("input/empty.txt")
+    list2sort = read_file(input_file)
+    
+    print my_list_sort(list2sort)
