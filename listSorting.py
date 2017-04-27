@@ -10,13 +10,20 @@ def my_list_sort(l):
     remove unwanted characters, and return sorted words
     and numbers as an list. 
     """
-    num_or_word = []
+    is_num = []
     nums = []
     words = []
     pattern = re.compile("[^A-Za-z0-9]")
     for i in l:
-        print pattern.sub("", i)
-    
+        s = pattern.sub("", i)
+        try:
+            nums.append(int(s))
+            is_num.append(True)
+        except:
+            words.append(s)
+            is_num.append(False)
+
+    print is_num, nums, words
 
 def read_file(path):
     """
