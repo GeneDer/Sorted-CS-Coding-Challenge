@@ -23,7 +23,16 @@ def my_list_sort(l):
             words.append(s)
             is_num.append(False)
 
-    print is_num, nums, words
+    nums.sort(reverse=True)
+    words.sort(reverse=True)
+
+    result = []
+    for i in is_num:
+        if i:
+            result.append(nums.pop())
+        else:
+            result.append(words.pop())
+    return result
 
 def read_file(path):
     """
