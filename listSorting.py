@@ -33,7 +33,7 @@ def my_list_sort(l):
             nums.append(int(s))
             is_num.append(True)
         except:
-            words.append(s.replace("", "-"))
+            words.append(s.replace("-", ""))
             is_num.append(False)
 
     nums.sort(reverse=True)
