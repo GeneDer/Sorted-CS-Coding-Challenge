@@ -26,14 +26,14 @@ def my_list_sort(l):
     is_num = []
     nums = []
     words = []
-    pattern = re.compile("[^A-Za-z0-9]")
+    pattern = re.compile("[^A-Za-z0-9-]")
     for i in l:
         s = pattern.sub("", i)
         try:
             nums.append(int(s))
             is_num.append(True)
         except:
-            words.append(s)
+            words.append(s.replace("", "-"))
             is_num.append(False)
 
     nums.sort(reverse=True)
